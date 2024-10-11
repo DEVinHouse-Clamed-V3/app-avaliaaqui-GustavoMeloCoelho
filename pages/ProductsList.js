@@ -3,7 +3,7 @@ import { View, Text, Image, StyleSheet, FlatList, SafeAreaView } from 'react-nat
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import axios from 'axios';
 
-const ProductsList = () => {
+const ProductsList = ({ navigation }) => {
 
 
   const [products, setProducts] = useState([]);
@@ -34,7 +34,7 @@ const ProductsList = () => {
         <Text>Marca: {item.brand}</Text>
         <Text>{item.description}</Text>
         <Text>{item.price}</Text>
-        <TouchableOpacity style={styles.button} onPress={() => alert('Botão Avaliar pressionado!')}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Avaliation", {products: item})}>
           <Text style={styles.buttonText}>Avaliar</Text>
         </TouchableOpacity>
       </View>
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   card: {
     width: '100%',
     height: 250,
-    backgroundColor: 'grey',
+    // backgroundColor: 'grey',
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     marginLeft: 17,
   },
   button: {
-    backgroundColor: '#ff0000', // Cor vermelha do botão
+    backgroundColor: '#ff0000',
     width: 93,
     paddingVertical: 10,
     paddingHorizontal: 20,
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   },
   descriptionContainer: {
     width: '59%',
-    backgroundColor: 'green'
+    // backgroundColor: 'green'
   }
 });
 
